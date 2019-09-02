@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+<!-- <bean/> definitions here -->
+<bean id="permanentAddressBean" class="com.talentsprint.businesstier.Address">
+	 <constructor-arg  index="0" value="702"></constructor-arg>
+	 <constructor-arg  index="1" value="Street 10"></constructor-arg>
+	 <constructor-arg  index="2" value="Hyderabad"></constructor-arg>
+	 <constructor-arg  index="3" value="Telangana"></constructor-arg>
+	 <constructor-arg  index="4" value="INDIA"></constructor-arg>	 
+</bean>
+
+<bean id="temporaryAddressBean" class="com.talentsprint.businesstier.Address">
+	 <constructor-arg  index="0" value="1"></constructor-arg>
+	 <constructor-arg  index="1" value="Street 1"></constructor-arg>
+	 <constructor-arg  index="2" value="Mumbai"></constructor-arg>
+	 <constructor-arg  index="3" value="Maharastra"></constructor-arg>
+	 <constructor-arg  index="4" value="INDIA"></constructor-arg>	 
+</bean>
+<bean id="birthdateBean" class="java.util.GregorianCalendar">
+	<constructor-arg index="0" value="1995"></constructor-arg>
+	<constructor-arg index="1" value="06"></constructor-arg>
+	<constructor-arg index="2" value="15"></constructor-arg>
+</bean>
+
+<bean id="personBean" class="com.talentsprint.businesstier.Person">
+	<constructor-arg index="0" value="HD235GB768"></constructor-arg>
+	<constructor-arg index="1" value="Ravi"></constructor-arg>
+	<constructor-arg index="2" value="Kumar"></constructor-arg>
+	<constructor-arg index="3" ref="birthdateBean"></constructor-arg>
+	<property name="address" ref="permanentAddressBean"></property>
+</bean>
+
+<bean id="personNewBean" class="com.talentsprint.businesstier.PersonNew">
+	<constructor-arg index="0" value="HD235GB768"></constructor-arg>
+	<constructor-arg index="1" value="Ravi"></constructor-arg>
+	<constructor-arg index="2" value="Kumar"></constructor-arg>
+	<constructor-arg index="3" ref="birthdateBean"></constructor-arg>
+	<property name="addressList">
+		<list>
+			<ref bean="permanentAddressBean"/>
+			<ref bean="temporaryAddressBean"/>
+		</list>
+	
+	</property>
+</bean>
+
+</beans>
